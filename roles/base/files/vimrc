@@ -1,0 +1,46 @@
+:set spellfile=/home/jogo/.vim/spellfile.add
+:set spell
+:syntax on
+:highlight clear SpellBad
+:highlight clear SpellCap
+:highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
+:highlight SpellCap term=standout ctermfg=4 term=underline cterm=underline
+:set tabstop=4
+:set softtabstop=4
+:set shiftwidth=4
+:set expandtab
+:set showmatch " Show matching brackets/braces/parentheses.
+:set autowriteall "auto save on select events
+:set showcmd
+:set incsearch "show best match so far for search
+:set hlsearch "highlight search matches
+
+filetype plugin on
+filetype plugin indent on
+
+"Tab completion
+function! InsertTabWrapper(direction)
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    elseif "backward" == a:direction
+        return "\<c-p>"
+    else
+        return "\<c-n>"
+    endif
+endfunction
+
+inoremap <tab> <c-r>=InsertTabWrapper ("forward")<cr>
+inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<cr>
+
+au FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4
+au FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2
+au FileType go setlocal tabstop=4 shiftwidth=4 softtabstop=4
+
+
+" trailing white space highlighting
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/

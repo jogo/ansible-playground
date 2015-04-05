@@ -1,0 +1,16 @@
+---
+- name: upgrade packages
+  apt: update_cache=yes upgrade=dist
+  sudo: yes
+- name: Install tools
+  apt: name={{item}} state=present
+  sudo: yes
+  with_items:
+    - git
+    - vim
+    - mosh
+    - tmux
+
+- name: .vimrc
+  # don't copy if already a .vimrc
+  copy: src=vimrc dest=~/.vimrc force=no
