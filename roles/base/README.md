@@ -12,7 +12,9 @@ None
 Role Variables
 --------------
 
-None
+* `upgrade`
+
+If `true` upgrade all packages first. Defaults to `true`
 
 Dependencies
 ------------
@@ -27,7 +29,8 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - base
+         - role: base
+           upgrade: false
 
 License
 -------
