@@ -1,0 +1,28 @@
+---
+# tasks file for weechat
+- name: Install weechat
+  apt: name={{item}} state=present
+  sudo: yes
+  with_items:
+    - weechat
+    - weechat-curses
+    - weechat-plugins
+    - weechat-scripts
+
+- name: Add .weechat directory
+  file: path=~/.weechat/perl/autoload/ state=directory recurse=yes
+
+- name: Configure Autoloads
+  file:
+    src: /usr/share/weechat/perl/{{ item }}
+    dest: ~/.weechat/perl/autoload/{{ item }}
+    state: link
+  with_items:
+    - buffers.pl
+    - highmon.pl
+
+- name: Add weechat.conf
+  copy: src=weechat.conf dest=~/.weechat/weechat.conf
+
+- name: Add irc.conf
+  template: src=irc.conf dest=~/.weechat/irc.conf
