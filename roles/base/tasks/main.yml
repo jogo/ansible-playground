@@ -12,7 +12,7 @@
     - mosh
     - tmux
 
-- name: .vimrc
+- name: Add .vimrc
   # don't copy if already a .vimrc
   copy: src=vimrc dest=~/.vimrc force=no
 
