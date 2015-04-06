@@ -24,5 +24,8 @@
 - name: Add weechat.conf
   copy: src=weechat.conf dest=~/.weechat/weechat.conf
 
+- name: Add aspell.conf
+  copy: src=aspell.conf dest=~/.weechat/aspell.conf
+
 - name: Add irc.conf
   template: src=irc.conf dest=~/.weechat/irc.conf
