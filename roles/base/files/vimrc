@@ -1,4 +1,4 @@
-:set spellfile=/home/jogo/.vim/spellfile.add
+:set spellfile=~/.vim/spellfile.add
 :set spell
 :syntax on
 :highlight clear SpellBad
