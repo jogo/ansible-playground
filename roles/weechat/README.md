@@ -31,11 +31,11 @@ passed in as parameters) is always nice for users too:
     - hosts: servers
       roles:
          - role: weechat
-         nicks: ircnick1,alias
-         username: freenode_user
-         realname: John Smith
-         autojoin: '#freenode'
-         ident_password: notsosecretpassword
+           nicks: ircnick1,alias
+           username: freenode_user
+           realname: John Smith
+           autojoin: '#freenode'
+           ident_password: notsosecretpassword
 
 
 License
