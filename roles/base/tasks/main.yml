@@ -1,10 +1,13 @@
 ---
+- name: apt-get update
+  apt: update_cache=yes cache_valid_time=3600
+  sudo: yes
 - name: upgrade packages
-  apt: update_cache=yes upgrade=dist
+  apt: upgrade=dist
   sudo: yes
   when: upgrade
 - name: Install tools
-  apt: name={{item}} state=present
+  apt: name={{item}} state=present update_cache=yes
   sudo: yes
   with_items:
     - git

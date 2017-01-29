@@ -7,4 +7,10 @@ Contains
 --------
 
 * Roles
-* Vagrant file to create a test environment
+* Docker based test script
+
+
+Testing
+-------
+
+run `test.sh` to build a docker image and launch it. Requires creating a file test.sh
